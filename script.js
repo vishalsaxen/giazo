@@ -1,0 +1,7 @@
+const cities=["Pune","Agra","Berlin","Munich","Dubai","Abu-Dhabi"],countries=["India","Germany","UAE"],codes={India:"+91",Germany:"+49",UAE:"+971"},items=["Brush","Soap","Notebook","Key-Chain","Battery","Pen","Tiffin-Box","Bottle","T-shirt","Milk"];
+["pcity","ccity"].forEach(id=>{let s=document.getElementById(id);cities.forEach(v=>s.add(new Option(v,v)));});
+["pcountry","ccountry"].forEach(id=>{let s=document.getElementById(id);countries.forEach(v=>s.add(new Option(v,v)));});
+document.getElementById("pcountry").onchange=e=>document.getElementById("code").value=codes[e.target.value]||"";
+let d=document.getElementById("items");items.forEach(i=>d.insertAdjacentHTML("beforeend",`<label><input type="checkbox" name="it" value="${i}">${i}</label>`));
+mobile.oninput=()=>mobile.value=mobile.value.replace(/\D/g,"");
+f.onsubmit=e=>{e.preventDefault();let data={title:title.value,name:name.value,permanentAddress:paddr.value,permanentCity:pcity.value,permanentCountry:pcountry.value,presentAddress:caddr.value,presentCity:ccity.value,presentCountry:ccountry.value,dob:dob.value,email:email.value,countryCode:code.value,mobile:mobile.value,items:[...document.querySelectorAll('input[name=it]:checked')].map(x=>x.value)};let json=JSON.stringify(data,null,2);out.textContent=json;let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([json],{type:"application/json"}));a.download="Gi-Mart-Registration.json";a.click();};
